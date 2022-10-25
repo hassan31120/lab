@@ -23,4 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::resource('/doctors', DoctorController::class);
+Route::get('/doctors', [DoctorController::class, 'index']);
+Route::post('/add_doctor', [DoctorController::class, 'store']);
+Route::post('/edit_doctor/{id}', [DoctorController::class, 'update']);
+Route::post('/del_doctor/{id}', [DoctorController::class, 'destroy']);

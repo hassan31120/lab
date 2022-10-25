@@ -59,8 +59,6 @@ class DoctorController extends Controller
         $doctor = Doctor::find($id);
 
         if ($doctor) {
-            # code...
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
                 'number' => 'required|numeric',
@@ -77,9 +75,9 @@ class DoctorController extends Controller
                 $filepath = 'storage/images/doctors/' . date('Y') . '/' . date('m') . '/';
                 $filename = $filepath . time() . '-' . $file->getClientOriginalName();
                 $file->move($filepath, $filename);
-                if(request('old-image')){
-                    $oldpath=request('old-image');
-                    if(File::exists($oldpath)){
+                if (request('old-image')) {
+                    $oldpath = request('old-image');
+                    if (File::exists($oldpath)) {
                         unlink($oldpath);
                     }
                 }
@@ -100,6 +98,18 @@ class DoctorController extends Controller
 
     public function destroy($id)
     {
-        //
+        $doctor = Doctor::find($id);
+        if ($doctor) {
+            $doctor->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'doctor has been deleted successfully'
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'there is no such doctor'
+            ], 200);
+        }
     }
 }
