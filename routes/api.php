@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+//doctors
 Route::get('/doctors', [DoctorController::class, 'index']);
 Route::post('/add_doctor', [DoctorController::class, 'store']);
 Route::post('/edit_doctor/{id}', [DoctorController::class, 'update']);
 Route::post('/del_doctor/{id}', [DoctorController::class, 'destroy']);
+
+//colors
+Route::get('/colors', [ColorController::class, 'index']);
+Route::post('/add_color', [ColorController::class, 'store']);
+Route::post('/edit_color/{id}', [ColorController::class, 'update']);
+Route::post('/del_color/{id}', [ColorController::class, 'destroy']);
+
+//types
+Route::get('/types', [TypeController::class, 'index']);
+Route::post('/add_type', [TypeController::class, 'store']);
+Route::post('/edit_type/{id}', [TypeController::class, 'update']);
+Route::post('/del_type/{id}', [TypeController::class, 'destroy']);
