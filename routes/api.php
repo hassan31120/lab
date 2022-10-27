@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+    Route::post('/add_order', [OrderController::class, 'store']);
+    Route::post('/edit_order/{id}', [OrderController::class, 'update']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -42,3 +45,7 @@ Route::get('/types', [TypeController::class, 'index']);
 Route::post('/add_type', [TypeController::class, 'store']);
 Route::post('/edit_type/{id}', [TypeController::class, 'update']);
 Route::post('/del_type/{id}', [TypeController::class, 'destroy']);
+
+//orders
+Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/del_order/{id}', [OrderController::class, 'destroy']);
