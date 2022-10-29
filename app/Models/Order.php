@@ -27,4 +27,8 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function edited(){
+        return $this->belongsTo(User::class, 'edited_by');
+    }
+
 }

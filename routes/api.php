@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('auth:api')->group(function () {
+    //orders
     Route::post('/add_order', [OrderController::class, 'store']);
     Route::post('/edit_order/{id}', [OrderController::class, 'update']);
 });

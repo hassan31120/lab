@@ -28,6 +28,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
                     ->onUpdate('cascade');
+            $table->unsignedBigInteger('edited_by')->nullable();
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->longText('notes')->nullable();
             $table->date('required_date')->nullable();
             $table->timestamps();

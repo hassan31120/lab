@@ -31,11 +31,12 @@ class OrderController extends Controller
     {
         $data = $request->all();
         $user = Auth::user();
+        $data['user_id'] = $user->id;
         $validator = Validator::make($data, [
-            'doctor_id' =>'required',
-            'type_id' =>'required',
-            'color_id' =>'required',
-            'user_id' =>'required',
+            'doctor_id' => 'required',
+            'type_id' => 'required',
+            'color_id' => 'required',
+            'user_id' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -53,13 +54,15 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::find($id);
+        $data = $request->all();
+        $user = Auth::user();
+        $data['edited_by'] = $user->id;
 
         if ($order) {
-            $validator = Validator::make($request->all(), [
-                'doctor_id' =>'required',
-                'type_id' =>'required',
-                'color_id' =>'required',
-                'user_id' =>'required',
+            $validator = Validator::make($data, [
+                'doctor_id' => 'required',
+                'type_id' => 'required',
+                'color_id' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -67,7 +70,6 @@ class OrderController extends Controller
                     'errors' => $validator->errors()
                 ], 200);
             }
-            $data = $request->all();
             $order->update($data);
             return response()->json([
                 'success' => true,
