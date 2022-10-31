@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProviderController;
+use App\Http\Controllers\Api\PurchaseController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -60,3 +61,9 @@ Route::get('/providers', [ProviderController::class, 'index']);
 Route::post('/add_provider', [ProviderController::class, 'store']);
 Route::post('/edit_provider/{id}', [ProviderController::class, 'update']);
 Route::post('/del_provider/{id}', [ProviderController::class, 'destroy']);
+
+//purchases
+Route::get('/purchases', [PurchaseController::class, 'index']);
+Route::post('/add_purchase', [PurchaseController::class, 'store']);
+Route::post('/edit_purchase/{id}', [PurchaseController::class, 'update']);
+Route::post('/del_purchase/{id}', [PurchaseController::class, 'destroy']);
