@@ -29,6 +29,8 @@ Route::middleware('auth:api')->group(function () {
     //orders
     Route::post('/add_order', [OrderController::class, 'store']);
     Route::post('/edit_order/{id}', [OrderController::class, 'update']);
+    Route::post('/editProfile', [AuthController::class, 'editProfile']);
+    Route::post('/ChangePassword', [AuthController::class, 'ChangePassword']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -67,3 +69,9 @@ Route::get('/purchases', [PurchaseController::class, 'index']);
 Route::post('/add_purchase', [PurchaseController::class, 'store']);
 Route::post('/edit_purchase/{id}', [PurchaseController::class, 'update']);
 Route::post('/del_purchase/{id}', [PurchaseController::class, 'destroy']);
+
+//Users
+Route::get('users', [AuthController::class, 'viewUsers']);
+Route::post('user/add', [AuthController::class, 'addUser']);
+Route::post('user/edit/{id}', [AuthController::class, 'editUser']);
+Route::post('user/del/{id}', [AuthController::class, 'delUser']);

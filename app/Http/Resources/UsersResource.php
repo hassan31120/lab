@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UsersResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +20,6 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'type' => $this->userType,
-            'token' => $this->createToken('mohammedhassanlab')->accessToken
         ];
     }
 }
