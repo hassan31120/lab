@@ -20,7 +20,7 @@ class PurchaseResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price,
-            'provider_id' => $this->provider->name,
+            'provider' => $this->provider->name,
         ];
     }
 }

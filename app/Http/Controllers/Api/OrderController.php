@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
+use App\Models\Doctor;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,5 +99,21 @@ class OrderController extends Controller
                 'message' => 'there is no such order!'
             ], 200);
         }
+    }
+
+    public function doctorOrders(Request $request, $id){
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 200);
+        }
+        $doctor = Doctor::find($id);
+
     }
 }

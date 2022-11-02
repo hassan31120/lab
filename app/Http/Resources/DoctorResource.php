@@ -22,7 +22,14 @@ class DoctorResource extends JsonResource
             'number'        => $this->number,
             'address'       => $this->address,
             'image'         => asset($this->image),
-            'created_at'    => $this->created_at
+            'created_at'    => $this->created_at,
+            'orders'        =>  $this->when(OrderResource::collection($this->orders), function(){
+                if (count(OrderResource::collection($this->orders)) > 0) {
+                    return OrderResource::collection($this->orders);
+                } else {
+                    return 'there is no orders!';
+                }
+            }),
         ];
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProviderController;
 use App\Http\Controllers\Api\PurchaseController;
+use App\Http\Controllers\Api\ReportsController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,3 +76,6 @@ Route::get('users', [AuthController::class, 'viewUsers']);
 Route::post('user/add', [AuthController::class, 'addUser']);
 Route::post('user/edit/{id}', [AuthController::class, 'editUser']);
 Route::post('user/del/{id}', [AuthController::class, 'delUser']);
+
+//Reports
+Route::post('reports', [ReportsController::class, 'reports']);
