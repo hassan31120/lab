@@ -79,3 +79,7 @@ Route::post('user/del/{id}', [AuthController::class, 'delUser']);
 
 //Reports
 Route::post('reports', [ReportsController::class, 'reports']);
+Route::post('orderReports', [ReportsController::class, 'orderReports']);
+Route::post('purchaseReports', [ReportsController::class, 'purchaseReports']);
+Route::post('doctorReports/{id}', [ReportsController::class, 'doctorReports']);
+Route::post('providerReports/{id}', [ReportsController::class, 'providerReports']);
