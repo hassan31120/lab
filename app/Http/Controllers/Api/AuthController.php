@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UsersResource;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -116,6 +117,7 @@ class AuthController extends Controller
 
     public function viewUsers()
     {
+        Carbon::setLocale('ar');
         $users = User::all();
         return response()->json([
             'success' => true,

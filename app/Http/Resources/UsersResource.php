@@ -20,6 +20,7 @@ class UsersResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'type' => $this->userType,
+            'created_at' => $this->created_at->diffForHumans()
         ];
     }
 }
