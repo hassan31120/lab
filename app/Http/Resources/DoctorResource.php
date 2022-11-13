@@ -27,7 +27,7 @@ class DoctorResource extends JsonResource
                 if (count(OrderResource::collection($this->orders)) > 0) {
                     return OrderResource::collection($this->orders);
                 } else {
-                    return 'there is no orders!';
+                    return OrderResource::collection($this->orders);
                 }
             }),
         ];
