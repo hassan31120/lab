@@ -20,7 +20,7 @@ class ProviderResource extends JsonResource
             'id'     => $this->id,
             'name'   => $this->name,
             'number' => $this->number,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at->diffForHumans()
         ];
     }
 }

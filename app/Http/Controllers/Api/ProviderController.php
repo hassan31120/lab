@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProviderResource;
 use App\Models\Provider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,6 +13,7 @@ class ProviderController extends Controller
 {
     public function index()
     {
+        Carbon::setLocale('ar');
         $providers = Provider::all();
         if (count($providers) > 0) {
             return response()->json([
