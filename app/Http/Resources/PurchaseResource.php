@@ -23,6 +23,7 @@ class PurchaseResource extends JsonResource
             'amount' => $this->amount,
             'total_price' =>(double) $this->total_price,
             'provider' => $this->provider->name,
+            'provider_id' => $this->provider_id,
             'created_at' => $this->created_at->diffForhumans(),
         ];
     }
