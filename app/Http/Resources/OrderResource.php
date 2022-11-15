@@ -18,21 +18,24 @@ class OrderResource extends JsonResource
 
         return [
             'id'            => $this->id,
-            // 'doctor_id'     => $this->doctor_id,
+            'doctor_id'     => $this->doctor_id,
             'doctor'        => $this->doctor->name,
-            // 'color_id'      => $this->color_id,
+            'address'        => $this->doctor->address,
+            'image'        => $this->doctor->image,
+            'color_id'      => $this->color_id,
             'color'         => $this->color->name,
-            // 'user_id'       => $this->user_id,
+            'user_id'       => $this->user_id,
             'created_by'    => $this->user->name,
             'edited_by'     => $this->edited->name ?? null,
-            // 'edited_by'     => $this->user->name,
-            // 'type_id'       => $this->type_id,
+            'edited_by'     => $this->user->name,
+            'type_id'       => $this->type_id,
             'type'          => $this->type->name,
             'price'         => $this->type->price,
             'patient_no'    => 'MH-' . $this->id,
             'patient_name'  => $this->patient_name,
             'required_date' => $this->required_date,
             'notes'         => $this->notes,
+            'created_at'    => $this->created_at
         ];
     }
 }
