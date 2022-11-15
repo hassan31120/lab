@@ -35,7 +35,7 @@ class OrderResource extends JsonResource
             'patient_name'  => $this->patient_name,
             'required_date' => $this->required_date,
             'notes'         => $this->notes,
-            'created_at'    => $this->created_at
+            'created_at'    => $this->created_at->diffForhumans()
         ];
     }
 }
