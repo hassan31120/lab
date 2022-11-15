@@ -9,11 +9,13 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
     public function index()
     {
+        Carbon::setlocale('ar');
         $orders = Order::all();
         if (count($orders) > 0) {
             return response()->json([
