@@ -24,6 +24,7 @@ class OrderResource extends JsonResource
             'image'         => asset($this->doctor->image),
             'color_id'      => $this->color_id,
             'color'         => $this->color->name,
+            'hex'           => 'background-color: ' . $this->color->hex,
             'user_id'       => $this->user_id,
             'created_by'    => $this->user->name,
             'edited_by'     => $this->edited->name ?? null,
